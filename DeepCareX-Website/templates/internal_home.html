@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthGPT - Dashboard</title>
+  <link href="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static',filename='bootstrap-icons-1.10.5/font/bootstrap-icons.css')}}">
+  <style>
+    body {
+      background-color: #f9fafc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .dashboard-header {
+      background: linear-gradient(135deg, #7aca7a, #50eb57);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      border-radius: 15px;
+      margin: 30px auto;
+      box-shadow: 0px 6px 20px rgba(0,0,0,0.2);
+    }
+    .dashboard-header h1 {
+      font-weight: 700;
+    }
+    .dashboard-header p {
+      opacity: 0.9;
+      font-size: 1.2rem;
+    }
+    .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.15);
+    }
+    footer {
+      background: #111;
+      color: #bbb;
+    }
+    footer a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="{{ url_for('internal_home') }}">HealthGPT</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('About') }}">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('Contact') }}">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('Newsletter') }}">Newsletter</a></li>
+          <li class="nav-item">
+            <span class="nav-link text-white">Welcome, <b>{{ login_user }}</b></span>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-light btn-sm ms-2">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Header -->
+  <div class="container">
+    <div class="dashboard-header mt-4">
+      <h1>👋 Hello, {{ login_user }}!</h1>
+      <p>Select a disease below to begin your health analysis.</p>
+    </div>
+  </div>
+
+  <!-- Disease Selection Grid -->
+  <div class="container mb-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+      <!-- Alzheimer -->
+      <div class="col">
+        <div class="card h-100 text-center">
+          <img src="{{ url_for('static',filename='Images/alzheimer.jpg') }}" alt="Alzheimer">
+          <div class="card-body">
+            <h5 class="card-title">Alzheimer</h5>
+            <p class="card-text">AI-powered early detection of Alzheimer’s disease.</p>
+            <a href="{{ url_for('Alzheimer') }}" class="btn btn-primary">Start Test</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breast Cancer -->
+      <div class="col">
+        <div class="card h-100 text-center">
+          <img src="{{ url_for('static',filename='Images/breast_cancer.jpg') }}" alt="Breast Cancer">
+          <div class="card-body">
+            <h5 class="card-title">Breast Cancer</h5>
+            <p class="card-text">ML-driven analysis for breast cancer diagnosis.</p>
+            <a href="{{ url_for('Breast_Cancer') }}" class="btn btn-success">Start Test</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brain Tumor -->
+      <div class="col">
+        <div class="card h-100 text-center">
+          <img src="{{ url_for('static',filename='Images/brain_tumor.jpg') }}" alt="Brain Tumor">
+          <div class="card-body">
+            <h5 class="card-title">Brain Tumor</h5>
+            <p class="card-text">Deep learning model for brain tumor classification.</p>
+            <a href="{{ url_for('Brain_Tumor') }}" class="btn btn-warning">Start Test</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Covid -->
+      <div class="col">
+        <div class="card h-100 text-center">
+          <img src="{{ url_for('static',filename='Images/covid.jpg') }}" alt="Covid">
+          <div class="card-body">
+            <h5 class="card-title">Covid-19</h5>
+            <p class="card-text">AI-assisted chest X-ray Covid diagnosis.</p>
+            <a href="{{ url_for('Covid') }}" class="btn btn-danger">Start Test</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diabetes -->
+      <div class="col">
+        <div class="card h-100 text-center">
+          <img src="{{ url_for('static',filename='Images/diabetes.jpg') }}" alt="Diabetes">
+          <div class="card-body">
+            <h5 class="card-title">Diabetes</h5>
+            <p class="card-text">Predictive model for diabetes detection.</p>
+            <a href="{{ url_for('Diabetes') }}" class="btn btn-secondary">Start Test</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hepatitis -->
+      <div class="col">
+        <div class="card h-100 text-center">
+          <img src="{{ url_for('static',filename='Images/hepatitis.jpg') }}" alt="Hepatitis">
+          <div class="card-body">
+            <h5 class="card-title">Hepatitis</h5>
+            <p class="card-text">ML model for hepatitis prediction & monitoring.</p>
+            <a href="{{ url_for('Hepatitis') }}" class="btn btn-info">Start Test</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pneumonia -->
+      <div class="col">
+        <div class="card h-100 text-center">
+          <img src="{{ url_for('static',filename='Images/pneumonia.jpg') }}" alt="Pneumonia">
+          <div class="card-body">
+            <h5 class="card-title">Pneumonia</h5>
+            <p class="card-text">X-ray based pneumonia detection using AI.</p>
+            <a href="{{ url_for('Pneumonia') }}" class="btn btn-dark">Start Test</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kidney -->
+      <div class="col">
+        <div class="card h-100 text-center">
+          <img src="{{ url_for('static',filename='Images/kidney.jpg') }}" alt="Kidney">
+          <div class="card-body">
+            <h5 class="card-title">Kidney Disease</h5>
+            <p class="card-text">Predictive analysis for chronic kidney disease.</p>
+            <a href="{{ url_for('Kidney') }}" class="btn btn-primary">Start Test</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center py-4">
+    <p class="mb-0">&copy; 2025 HealthGPT - AI Powered Healthcare |
+      <a href="https://www.linkedin.com/in/vishnu-bp/">LinkedIn</a>
+    </p>
+  </footer>
+
+  <script src="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

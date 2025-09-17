@@ -1,0 +1,12 @@
+
+tensorflow==2.9.0
+keras
+flask
+numpy
+pandas
+scikit-learn
+matplotlib
+scipy
+seaborn
+xgboost
+joblib

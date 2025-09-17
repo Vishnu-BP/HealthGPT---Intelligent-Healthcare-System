@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact</title>
+    <style>
+      body {
+        background: url("static/Images/contact.jpg") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .contact-wrapper {
+        max-width: 1100px;
+        margin: 40px auto;
+      }
+      .contact-card {
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: rgba(0,0,0,0.25) 0px 8px 16px;
+      }
+      .contact-form {
+        flex: 1;
+        padding: 30px;
+        background: #2e3440;
+        color: #fff;
+      }
+      .contact-form h4 {
+        margin-bottom: 20px;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        background: #1a1d23;
+        border: 1px solid #444;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 6px;
+        color: #fff;
+        font-size: 15px;
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: none;
+        border-color: #feda6a;
+        box-shadow: 0 0 6px #feda6a;
+      }
+      .contact-form button {
+        background: #feda6a;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+      .contact-form button:hover {
+        background: #e5c85c;
+        transform: scale(1.05);
+      }
+      .contact-info {
+        flex: 0.8;
+        padding: 30px;
+        background: #f8f9fa;
+      }
+      .contact-info h4 {
+        margin-bottom: 20px;
+      }
+      .info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+      .info-item i {
+        font-size: 22px;
+        margin-right: 10px;
+        color: #2e3440;
+      }
+      @media (max-width: 768px) {
+        .contact-card {
+          flex-direction: column;
+        }
+      }
+    </style>
+    <link href="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap-icons-1.10.5/font/bootstrap-icons.css')}}">
+  </head>
+  <body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="https://www.linkedin.com/in/vishnu-bp/">HealthGPT</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="{{url_for('home')}}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('About')}}">About Us</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search">
+            <button class="btn btn-outline-warning" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Flash message -->
+    {% for message in get_flashed_messages(with_categories=True) %}
+    <div class="alert alert-{{ message[0] }} mb-0" role="alert">
+      <strong>{{ message[1] }}</strong>
+    </div>
+    {% endfor %}
+
+    <!-- Contact Section -->
+    <div class="contact-wrapper">
+      <div class="contact-card">
+        <!-- Left Form -->
+        <div class="contact-form">
+          <h4>Get in Touch</h4>
+          <form action="{{url_for('Reply')}}" method="post">
+            <input type="text" placeholder="Enter your name" name="name">
+            <input type="text" placeholder="Enter your email" name="email">
+            <input type="text" placeholder="Enter your number" name="contact">
+            <textarea placeholder="Write your message here..." name="message"></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <!-- Right Info -->
+        <div class="contact-info">
+          <h4>Contact Us</h4>
+          <div class="info-item"><i class="bi bi-geo-alt-fill"></i> <span>Hassan, Karnataka, India</span></div>
+          <div class="info-item"><i class="bi bi-telephone-fill"></i> <span>+91 9886898868</span></div>
+          <div class="info-item"><i class="bi bi-envelope-fill"></i> <span>HealthGPT@gmail.com</span></div>
+          <div class="info-item"><i class="bi bi-browser-chrome"></i> <span>www.HealthGPT.com</span></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/js/bootstrap.bundle.min.js')}}"></script>
+  </body>
+</html>

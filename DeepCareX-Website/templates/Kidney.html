@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kidney Disease Diagnosis</title>
+    <link href="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap-icons-1.10.5/font/bootstrap-icons.css')}}">
+    <style>
+      body {
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                    url("{{url_for('static', filename='Images/kidney456.jpg')}}") no-repeat center center/cover;
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .form-card {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        padding: 2rem;
+        color: #fff;
+        box-shadow: 0px 8px 24px rgba(0,0,0,0.5);
+      }
+      .form-card h3 {
+        font-weight: 600;
+        color: #20c997; /* Teal-green */
+      }
+      .btn-success {
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      .btn-success:hover {
+        background-color: #198754;
+        transform: scale(1.05);
+      }
+      nav a.nav-link {
+        font-weight: 500;
+        margin-right: 10px;
+      }
+      nav a.nav-link:hover {
+        color: #20c997 !important;
+      }
+      .navbar-brand i {
+        font-size: 1.8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="{{url_for('internal_home')}}">
+          <i class="bi bi-droplet-half me-2 text-success"></i> HealthGPT
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="{{url_for('Alzheimer')}}">Alzheimer</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('Breast_Cancer')}}">Breast Cancer</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('Brain_Tumor')}}">Brain Tumor</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('Covid')}}">Covid-19</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('Diabetes')}}">Diabetes</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('Hepatitis')}}">Hepatitis</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('Pneumonia')}}">Pneumonia</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{url_for('Kidney')}}">Kidney Disease</a></li>
+          </ul>
+          <div class="dropdown ms-3">
+            <a class="btn btn-outline-success dropdown-toggle" href="#" id="userMenu" data-bs-toggle="dropdown">
+              <i class="bi bi-person-circle"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><p class="dropdown-item mb-0">{{login_user}}</p></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{{url_for('logout')}}">Sign Out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Form -->
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 85vh;">
+      <div class="col-lg-8">
+        <form class="form-card" action="{{url_for('Kidney_Report')}}" method="post" enctype="multipart/form-data">
+          <div class="text-center mb-4">
+            <h3><i class="bi bi-droplet-half me-2"></i> Kidney Disease Diagnosis</h3>
+            <p class="text-light">Upload patient details and diagnostic scan</p>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6"><input type="text" class="form-control" placeholder="Name" name="name" required></div>
+            <div class="col-md-6"><input type="text" class="form-control" placeholder="Patient ID" name="id" required></div>
+            <div class="col-md-6"><input type="email" class="form-control" placeholder="Email" name="email" required></div>
+            <div class="col-md-6"><input type="tel" class="form-control" placeholder="Phone" maxlength="10" name="contact" required></div>
+            <div class="col-md-4"><input type="text" class="form-control" placeholder="Country" name="country" required></div>
+            <div class="col-md-4">
+              <select class="form-select" name="state" required>
+                <option selected>Maharasthra</option>
+                <option>Karnataka</option>
+                <option>West Bengal</option>
+                <option>Delhi</option>
+                <option>Kerala</option>
+              </select>
+            </div>
+            <div class="col-md-4"><input type="text" class="form-control" placeholder="Pincode" name="pin" required></div>
+            <div class="col-md-8">
+              <select class="form-select" name="gender" required>
+                <option>Male</option><option>Female</option>
+              </select>
+            </div>
+            <div class="col-md-4"><input type="number" class="form-control" placeholder="Age" min="1" max="120" name="age" required></div>
+            <div class="col-12">
+              <label class="form-label">Upload Scan</label>
+              <input class="form-control" type="file" name="image" required accept="image/jpg,image/png,image/jpeg">
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="save" id="saveCheck">
+                <label class="form-check-label" for="saveCheck">Save Data</label>
+              </div>
+            </div>
+            <div class="col-12 d-grid">
+              <button type="submit" class="btn btn-success btn-lg">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="{{url_for('static',filename='jquery/jquery-3.6.4.min.js')}}"></script> 
+    <script src="{{url_for('static',filename='popper/popper.min.js')}}"></script> 
+    <script src="{{url_for('static',filename='bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js')}}"></script>
+  </body>
+</html>

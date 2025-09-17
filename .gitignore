@@ -1,0 +1,25 @@
+# Exclude dataset and model code folders
+DeepCareX-Datasets/
+DeepCareX-Model_Codes/
+Models/
+
+# Exclude project docs and presentations
+DeepCareX.pdf
+DeepCareX.pptx
+
+# Exclude Dockerfile
+Dockerfile
+
+# Exclude virtual environment
+venv/
+
+# Common Python cache & environment files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+*.db
+.ipynb_checkpoints/
+.env

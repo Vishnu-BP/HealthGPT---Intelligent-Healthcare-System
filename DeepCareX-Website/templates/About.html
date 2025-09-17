@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - HealthGPT</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="{{ url_for('static', filename='bootstrap-5.3.0-alpha3-dist/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-icons-1.10.5/font/bootstrap-icons.css') }}">
+
+  <style>
+    .hero-about {
+      background: url("{{ url_for('static', filename='Images/about.jpg') }}") no-repeat center center/cover;
+      height: 60vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+    .hero-about::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .team-card {
+      border: none;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    footer ul li a {
+      color: #ccc;
+      text-decoration: none;
+    }
+    footer ul li a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">HealthGPT</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('Contact') }}">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-about">
+    <div class="hero-content">
+      <h1 class="display-4 fw-bold">About Our Project</h1>
+      <p class="lead">Building AI-powered solutions to transform healthcare.</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="fw-bold text-center mb-4">Who We Are</h2>
+      <p class="text-center mb-5">
+        We are a team of passionate computer science students dedicated to building innovative solutions that create real-world impact.  
+        Our Major Project is titled:<br> <strong>Health GPT – AI Powered Health Care System</strong>.
+      </p>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="team-card">
+            <h5>Vishnu B P</h5>
+            <p class="text-muted">USN: 4YG22CS122</p>
+            <p>Dept. CSE,NCEH</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-card">
+            <h5>Tarun Kumar A R</h5>
+            <p class="text-muted">USN: 4YG22CS115</p>
+            <p>Dept. CSE,NCEH</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-card">
+            <h5>Vasantha Kumar H C</h5>
+            <p class="text-muted">USN: 4YG23CS410</p>
+            <p>Dept. CSE,NCEH</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="team-card">
+            <h5>Poshan M S</h5>
+            <p class="text-muted">USN: 4YG22CS073</p>
+            <p>Dept. CSE,NCEH</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision & Mission -->
+  <section class="py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4">Our Vision & Mission</h2>
+      <p class="mb-4">
+        The motivation behind this project comes from the increasing need for accessible, reliable, and intelligent healthcare solutions.  
+        Many people face challenges in getting timely medical guidance, and our goal is to bridge that gap by leveraging cutting-edge technology.
+      </p>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="p-4 border rounded h-100">
+            <i class="bi bi-lightbulb-fill fs-1 text-primary mb-3"></i>
+            <h5>Our Vision</h5>
+            <p>To contribute to the future of digital healthcare by delivering solutions that are technically strong and socially impactful.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 border rounded h-100">
+            <i class="bi bi-heart-pulse-fill fs-1 text-danger mb-3"></i>
+            <h5>Our Mission</h5>
+            <p>To use AI, ML, and DL techniques to provide intelligent health insights, recommendations, and assistance for better patient care.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white mt-auto py-3">
+    <div class="container d-flex justify-content-between">
+      <p class="mb-0">&copy; 2025 Major Project - Health GPT</p>
+      <ul class="list-unstyled d-flex gap-3 mb-0">
+        <li><a href="https://www.linkedin.com/in/vishnu-bp/">Privacy Policy</a></li>
+        <li><a href="https://www.linkedin.com/in/vishnu-bp/">Terms of Use</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="{{ url_for('static', filename='jquery/jquery-3.6.4.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='popper/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-5.3.0-alpha3-dist/js/bootstrap.min.js') }}"></script>
+</body>
+</html>

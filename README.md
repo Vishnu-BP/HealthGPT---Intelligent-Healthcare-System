@@ -493,6 +493,7 @@ Additionally, the capacity to store symptom information and associated diagnoses
 ### About Us
 
 ![](./media/image41.png)
+![](./media/image41.1.png)
 
 ### Contact
 
@@ -536,9 +537,9 @@ Additionally, the capacity to store symptom information and associated diagnoses
 
 ![](./media/image51.png)
 
-### Result for Kidney Disease
+### Result or output page
 
-![](./media/image52.png)
+
 
 ![](./media/image53.png)
 
